@@ -44,9 +44,6 @@ class Bot:
             if int(date[0]) == datetime.date.today().day \
                     and date[1] == self.month[datetime.date.today().month]:
                 self.events[tag_a.find("h1").text] = tag_a.find("span").text
-            else:
-                if tag_a.find("h1").text in self.events:
-                    del self.events[tag_a.find("h1").text]
         print(self.events)
 
     def message_events(self):
