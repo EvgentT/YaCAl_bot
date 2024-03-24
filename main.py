@@ -18,7 +18,7 @@ class Bot:
 
         @self.bot.message_handler(commands=["help", "start"])
         def send_message(message):
-            self.bot.send_message(message.chat.id, "Я Календарь-бот, отправь мне ссылку для экспорта событий из Яндекс.Календаря в формате HTMl")
+            self.bot.send_message(message.chat.id, "Я Календарь-бот, отправь мне ссылку для экспорта событий из Яндекс.Календаря в формате HTML")
 
         @self.bot.message_handler(content_types=['text'])
         def echo_message(message):
@@ -55,10 +55,12 @@ class Bot:
 
 
 
-
 bot = Bot()
 
 if __name__ == '__main__':
     bot.run()
+
+
+
 
 
