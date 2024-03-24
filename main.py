@@ -43,15 +43,16 @@ class Bot:
             date = tag_a.find("span").text.split()
             if int(date[0]) == datetime.date.today().day \
                     and date[1] == self.month[datetime.date.today().month]:
-                self.events[tag_a.find("h1").text] = tag_a.find("span").text
+                self.events[tag_a.find("span").text] = tag_a.find("h1").text
         print(self.events)
 
     def message_events(self):
         self.response()
         for event in self.events:
-            if str(datetime.datetime.now()).split()[1][:5] == self.events[event].split()[-1]:
-                self.bot.send_message(self.id, f"Событие: {event}")
+            if str(datetime.datetime.now()).split()[1][:5] == str(event).split()[-1]:
+                self.bot.send_message(self.id, f"Событие: {self.events[event]}")
                 time.sleep(60)
+
 
 
 
@@ -59,8 +60,6 @@ bot = Bot()
 
 if __name__ == '__main__':
     bot.run()
-
-
 
 
 
