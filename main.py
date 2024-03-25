@@ -42,7 +42,6 @@ class Bot:
                     and date[1] == self.month[datetime.date.today().month]:
                 self.events[tag_a.find("span").text] = tag_a.find("h1").text
 
-        print(self.events)
 
     def message_events(self):
         self.response()
