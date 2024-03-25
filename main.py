@@ -7,7 +7,7 @@ import time
 
 class Bot:
     def __init__(self):
-        self.TOKEN = "7099434043:AAFrk8wjqLtlTm_MtSZghNA8bJki-Y15PZk"
+        self.TOKEN = "TOKEN"
         self.bot = telebot.TeleBot(self.TOKEN)
         self.month = {1: 'января', 2: 'февраля', 3: 'марта', 4: 'апреля', 5: 'мая', 6: 'июня',
                  7: 'июля', 8: 'августа', 9: 'сентября', 10: 'октября', 11: 'ноября', 12: 'декабря'}
