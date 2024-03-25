@@ -7,7 +7,7 @@ import time
 
 class Bot:
     def __init__(self):
-        self.TOKEN = "ТOKEN"
+        self.TOKEN = "7099434043:AAFrk8wjqLtlTm_MtSZghNA8bJki-Y15PZk"
         self.bot = telebot.TeleBot(self.TOKEN)
         self.month = {1: 'января', 2: 'февраля', 3: 'марта', 4: 'апреля', 5: 'мая', 6: 'июня',
                  7: 'июля', 8: 'августа', 9: 'сентября', 10: 'октября', 11: 'ноября', 12: 'декабря'}
@@ -31,6 +31,7 @@ class Bot:
     def run(self):
         self.bot.infinity_polling()
 
+    # Проверка на наличие событий на сегодняшний день (Парсинг и добавление в словарь)
     def response(self):
         response = requests.get(self.HTML)
         soup = BeautifulSoup(response.text, features='html.parser')
@@ -42,7 +43,7 @@ class Bot:
                     and date[1] == self.month[datetime.date.today().month]:
                 self.events[tag_a.find("span").text] = tag_a.find("h1").text
 
-
+    # Отправка сообщений в чат
     def message_events(self):
         self.response()
         for event in self.events:
@@ -52,10 +53,3 @@ class Bot:
 
 
 bot = Bot()
-
-if __name__ == '__main__':
-    bot.run()
-
-
-
-
