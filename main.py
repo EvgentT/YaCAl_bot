@@ -9,10 +9,6 @@ class Bot:
     def __init__(self):
         self.TOKEN = "7099434043:AAFrk8wjqLtlTm_MtSZghNA8bJki-Y15PZk"
         self.bot = telebot.TeleBot(self.TOKEN)
-        self.day = datetime.datetime.day
-        self.events = {}
-        self.HTML = None
-        self.id = None
         self.month = {1: 'января', 2: 'февраля', 3: 'марта', 4: 'апреля', 5: 'мая', 6: 'июня',
                  7: 'июля', 8: 'августа', 9: 'сентября', 10: 'октября', 11: 'ноября', 12: 'декабря'}
 
@@ -39,14 +35,13 @@ class Bot:
         response = requests.get(self.HTML)
         soup = BeautifulSoup(response.text, features='html.parser')
         tag_div = soup.find_all('div', attrs={'class': 'b-content-event'})
+        self.events = {}
         for tag_a in tag_div:
             date = tag_a.find("span").text.split()
             if int(date[0]) == datetime.date.today().day \
                     and date[1] == self.month[datetime.date.today().month]:
                 self.events[tag_a.find("span").text] = tag_a.find("h1").text
-            else:
-                if tag_a.find("span").text in self.events:
-                    del self.events[tag_a.find("span").text]
+
         print(self.events)
 
     def message_events(self):
@@ -57,10 +52,11 @@ class Bot:
                 time.sleep(60)
 
 
-
-
 bot = Bot()
 
 if __name__ == '__main__':
     bot.run()
+
+
+
 
