@@ -1,5 +1,12 @@
 # YaCAl_bot
-Бот на Pyhon для интеграции с Яндекс.Календарём 
+Телеграм_Бот на Pyhon для интеграции с Яндекс.Календарём
+
+Библиотеки:
+1. pyTelegramBotAPI
+2. requests
+3. time
+4. BeautifulSoup
+5. datetime
 
 
 1. Запустить проект
